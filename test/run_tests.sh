@@ -48,6 +48,8 @@ for t in $TEST_DATA_PATH/testCases/*.json; do
     jq '.' $t
     echo "  ${UNDERLINE}Response:$RESET"
     echo $result_location
+    echo "  ${UNDERLINE}GUI-Backend Logs:$RESET"
+    docker logs codex-deploy_zars-feasibility-gui-backend_1
     case_fail=$((case_fail+1))
     continue
   fi

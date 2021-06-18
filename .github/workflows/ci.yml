@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - main
+    - test-foo
     tags:
     - v[0-9]+.[0-9]+.[0-9]+**
   pull_request:
@@ -58,6 +59,7 @@ jobs:
         CODEX_DSF_DIC_BPE_APP_JVM_ARGS: -Xmx500m
         CODEX_DSF_ZARS_FHIR_APP_JVM_ARGS: -Xmx1g
         CODEX_DSF_ZARS_BPE_APP_JVM_ARGS: -Xmx500m
+        CODEX_FEASIBILITY_BACKEND_API_BASE_URL: http://localhost:8091/api/
       run: ./start-zars-and-num-node.sh --disable-result-obfuscation
 
     - name: Wait for FHIR Server Running
@@ -68,6 +70,13 @@ jobs:
 
     - name: Initialize Test Data
       run: bash num-node/init-testdata.sh
+
+    - name: FOO
+      run: |
+        pwd
+        ls -lha
+        ls -lha zars/ontology
+        docker exec codex-deploy_zars-feasibility-gui-backend_1 ls -lha /opt/codex-feasibility-backend/ontology
 
     - name: Run tests
       env:

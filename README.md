@@ -14,6 +14,14 @@ A "Num-Node" part, which provides a deployment for the decenctralized components
 </figure>
 
 
+## Prerequisites
+
+To run any scripts within this project the following dependencies need to be satisfied:
+
+- Docker ([Installation instructions](https://docs.docker.com/engine/install/))
+- Docker-Compose ([Installation instructions](https://docs.docker.com/compose/install/)) 
+- Bash
+
 ## Initial Setup
 
 ### Step 1 - Initialise certificates

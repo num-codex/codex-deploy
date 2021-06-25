@@ -20,6 +20,7 @@ jobs:
 
   test:
     strategy:
+      fail-fast: false
       matrix:
         middleware: [AKTIN, DSF]
         fhir-server: [BLAZE, HAPI]

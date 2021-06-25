@@ -72,7 +72,7 @@ jobs:
     - name: Wait for FHIR Server Running
       uses: ifaxity/wait-on-action@v1
       with:
-        resource: http://localhost:8081/health
+        resource: http-get://localhost:8081/fhir/CapabilityStatement
         timeout: 60000
 
     - name: Initialize Test Data

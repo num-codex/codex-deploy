@@ -24,7 +24,7 @@ print_info() {
 
 print_success() {
   echo "$GREEN SUCCESS$RESET"
-  while ! { [[ -z "$1" ]] || [[ -z "$2" ]]; }; do
+  while ! [[ -z "$1" ]]; do
     print_info "$1" "$2"
     shift 2
   done
@@ -32,7 +32,7 @@ print_success() {
 
 print_fail() {
   echo "$RED FAILURE $RESET"
-  while ! { [[ -z "$1" ]] || [[ -z "$2" ]]; }; do
+  while ! [[ -z "$1" ]]; do
     print_info "$1" "$2"
     shift 2
   done
@@ -103,7 +103,7 @@ for f in $files; do
                                  --data "@$f" \
                                  "$QUERY_ENDPOINT_URL")"
   if ! jq -ne --argjson result "$result_location" '$result | .location != null' 1> /dev/null 2>&1; then
-    print_fail "Error" "${RED}Query response does not conform to expected format${RESET}" "Query" "$(jq '.' $t)" "Response" "$result_location"
+    print_fail "Error" "${RED}Query response does not conform to expected format${RESET}" "Query" "$query" "Response" "$result_location"
     continue
   fi
   result_location="$(jq -rn --argjson result "$result_location" '$result | .location')"

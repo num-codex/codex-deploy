@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   zars-keycloak:
-    image: ghcr.io/num-codex/codex-keycloak:0.0.1
+    image: ghcr.io/num-codex/codex-keycloak:${ZARS_KEYCLOAK_CODEX_KEYCLOAK_VERSION}
     environment:
       PROXY_ADDRESS_FORWARDING: "true"
       KEYCLOAK_USER: admin

@@ -14,6 +14,11 @@ FHIR_SERVER_TYPE=BLAZE
 QUERY_FORMAT=STRUCTURED
 OBFUSCATE=true
 
+# Set Docker Image Versions
+. $BASE_DIR/set-image-versions.sh
+
+env
+
 usage() {
   cat <<USAGE
 usage: $(basename $0) [flags]

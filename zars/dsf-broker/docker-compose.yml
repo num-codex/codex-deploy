@@ -3,7 +3,7 @@ version: '3.7'
 services:
   # ZARS FHIR -----------------------------------------------------------------
   dsf-zars-fhir-proxy:
-    image: ghcr.io/highmed/fhir_proxy:0.4.0
+    image: ghcr.io/highmed/fhir_proxy:${ZARS_DSF_BROKER_FHIR_HIGHMED_FHIR_PROXY_VERSION}
     volumes:
     - type: bind
       source: ./fhir/proxy/ssl
@@ -15,7 +15,7 @@ services:
     - dsf-zars-fhir-app
 
   dsf-zars-fhir-app:
-    image: ghcr.io/num-codex/codex-processes-ap2/fhir:0.1.0-rc5
+    image: ghcr.io/num-codex/codex-processes-ap2/fhir:${ZARS_DSF_BROKER_FHIR_CODEX_PROCESSES_AP2_FHIR_VERSION}
     restart: on-failure
     volumes:
     - type: bind
@@ -43,7 +43,7 @@ services:
     - dsf-zars-fhir-db
 
   dsf-zars-fhir-db:
-    image: postgres:13
+    image: postgres:${ZARS_DSF_BROKER_FHIR_POSTGRES_VERSION}
     restart: on-failure
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U liquibase_user -d fhir" ]
@@ -63,7 +63,7 @@ services:
 
   # ZARS BPE ------------------------------------------------------------------
   dsf-zars-bpe-app:
-    image: ghcr.io/num-codex/codex-processes-ap2/bpe:0.1.0-rc5
+    image: ghcr.io/num-codex/codex-processes-ap2/bpe:${ZARS_DSF_BROKER_BPE_CODEX_PROCESSES_AP2_BPE_VERSION}
     restart: on-failure
     volumes:
     - type: bind
@@ -93,7 +93,7 @@ services:
     - dsf-zars-fhir-proxy
 
   dsf-zars-bpe-db:
-    image: postgres:13
+    image: postgres:${ZARS_DSF_BROKER_BPE_POSTGRES_VERSION}
     restart: on-failure
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U liquibase_user -d bpe" ]

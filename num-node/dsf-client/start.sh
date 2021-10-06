@@ -5,6 +5,9 @@
 
 BASE_DIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+# Set Docker Image Versions
+. $BASE_DIR/../../set-image-versions.sh
+
 # FHIR ------------------------------------------------------------------------
 
 echo "Starting ZARS FHIR app..."

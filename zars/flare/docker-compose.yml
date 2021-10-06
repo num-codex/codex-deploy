@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   zars-flare:
-    image: ghcr.io/num-codex/codex-flare:0.0.5
+    image: ghcr.io/num-codex/codex-flare:${ZARS_FLARE_CODEX_FLARE_VERSION}
     ports:
       - ${ZARS_PORT_FLARE:-127.0.0.1:5001}:5000
     environment:

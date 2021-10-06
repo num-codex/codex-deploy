@@ -8,6 +8,9 @@ FHIR_SERVER=${FHIR_SERVER:-blaze}
 CERT_FILE=${CERT_FILE:-$BASE_DIR/auth/cert.pem}
 KEY_FILE=${KEY_FILE:-$BASE_DIR/auth/key.pem}
 
+# Set Docker Image Versions
+. $BASE_DIR/../set-image-versions.sh
+
 docker-compose -p $COMPOSE_PROJECT -f $BASE_DIR/aktin-client/docker-compose.yml up -d
 docker-compose -p $COMPOSE_PROJECT -f $BASE_DIR/flare/docker-compose.yml up -d
 

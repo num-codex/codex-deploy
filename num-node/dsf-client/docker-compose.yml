@@ -3,7 +3,7 @@ version: '3.7'
 services:
   # DIC FHIR ------------------------------------------------------------------
   dsf-dic-fhir-proxy:
-    image: ghcr.io/highmed/fhir_proxy:0.4.0
+    image: ghcr.io/highmed/fhir_proxy:${NUM_NODE_FHIR_HIGHMED_FHIR_PROXY_VERSION}
     restart: on-failure
     volumes:
     - type: bind
@@ -16,7 +16,7 @@ services:
     - dsf-dic-fhir-app
 
   dsf-dic-fhir-app:
-    image: ghcr.io/num-codex/codex-processes-ap2/fhir:0.1.0-rc5
+    image: ghcr.io/num-codex/codex-processes-ap2/fhir:${NUM_NODE_FHIR_CODEX_PROCESSES_AP2_FHIR_VERSION}
     restart: on-failure
     volumes:
     - type: bind
@@ -44,7 +44,7 @@ services:
     - dsf-dic-fhir-db
 
   dsf-dic-fhir-db:
-    image: postgres:13
+    image: postgres:${NUM_NODE_FHIR_POSTGRES_VERSION}
     restart: on-failure
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U liquibase_user -d fhir" ]
@@ -64,7 +64,7 @@ services:
 
   # DIC BPE -------------------------------------------------------------------
   dsf-dic-bpe-app:
-    image: ghcr.io/num-codex/codex-processes-ap2/bpe:0.1.0-rc5
+    image: ghcr.io/num-codex/codex-processes-ap2/bpe:${NUM_NODE_BPE_CODEX_PROCESSES_AP2_BPE_VERSION}
     restart: on-failure
     volumes:
     - type: bind
@@ -97,7 +97,7 @@ services:
     - dsf-dic-bpe-db
 
   dsf-dic-bpe-db:
-    image: postgres:13
+    image: postgres:${NUM_NODE_BPE_POSTGRES_VERSION}
     restart: on-failure
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U liquibase_user -d bpe" ]

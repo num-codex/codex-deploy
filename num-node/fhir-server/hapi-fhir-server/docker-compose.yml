@@ -3,7 +3,7 @@ version: "3.7"
 services:
   fhir-server:
     container_name: fhir-server
-    image: hapiproject/hapi:v5.4.1
+    image: hapiproject/hapi:${NUM_NODE_HAPI_CODEX_HAPI_VERSION}
     restart: always
     ports:
       - ${PORT_HAPI_FHIR:-127.0.0.1:8081}:8080
@@ -20,7 +20,7 @@ services:
 
   db:
     container_name: hapidb
-    image: postgres:12.6-alpine
+    image: postgres:${NUM_NODE_HAPI_POSTGRES_VERSION}
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   zars-feasibility-gui-backend:
-    image: ghcr.io/num-codex/codex-feasibility-backend:0.0.9
+    image: ghcr.io/num-codex/codex-feasibility-backend:${ZARS_BACKEND_CODEX_FEASIBILITY_BACKEND_VERSION}
     ports:
     - ${CODEX_FEASIBILITY_BACKEND_PORT:-127.0.0.1:8091}:8090
     depends_on:
@@ -36,7 +36,7 @@ services:
       - ${CODEX_FEASIBILITY_BACKEND_CERTS_PATH:-../dsf-broker/certs}:/opt/codex-feasibility-security
 
   zars-feasibility-db:
-    image: 'postgres:13.1-alpine'
+    image: 'postgres:${ZARS_BACKEND_POSTGRES_VERSION}'
     environment:
       - POSTGRES_USER=codex-postgres
       - POSTGRES_PASSWORD=codex-password
